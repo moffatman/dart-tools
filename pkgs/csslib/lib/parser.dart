@@ -1756,9 +1756,17 @@ class _Parser {
 
       // Handle !important (prio)
       var importantPriority = _maybeEat(TokenKind.IMPORTANT);
+      var tooManyImportants = false;
+      while (_maybeEat(TokenKind.IMPORTANT)) {
+        tooManyImportants = true;
+      }
 
       decl = Declaration(propertyIdent, exprs, dartComposite, _makeSpan(start),
           important: importantPriority, ie7: ie7);
+      if (tooManyImportants) {
+        _error('Invalid property value', decl.span);
+        decl = null;
+      }
     } else if (_peekToken.kind == TokenKind.VAR_DEFINITION) {
       _next();
       Identifier? definedName;
