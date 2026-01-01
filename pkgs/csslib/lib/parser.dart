@@ -126,6 +126,15 @@ SelectorGroup? parseSelectorGroup(Object input, {List<Message>? errors}) {
       .processSelectorGroup();
 }
 
+DeclarationGroup parseDeclarations(Object input, {List<Message>? errors}) {
+  var source = _inputAsString(input);
+
+  _createMessages(errors: errors);
+
+  var file = SourceFile.fromString(source);
+  return _Parser(file, source).processDeclarations(checkBrace: false);
+}
+
 String _inputAsString(Object input) {
   String source;
 
