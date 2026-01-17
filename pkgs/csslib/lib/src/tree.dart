@@ -1419,13 +1419,13 @@ class HexColorTerm extends LiteralTerm {
 }
 
 class FunctionTerm extends LiteralTerm {
-  final Expressions _params;
+  final Expressions params;
 
-  FunctionTerm(Object value, String text, this._params, SourceSpan? span)
+  FunctionTerm(Object value, String text, this.params, SourceSpan? span)
       : super(value, text, span);
 
   @override
-  FunctionTerm clone() => FunctionTerm(value, text, _params.clone(), span);
+  FunctionTerm clone() => FunctionTerm(value, text, params.clone(), span);
   @override
   dynamic visit(VisitorBase visitor) => visitor.visitFunctionTerm(this);
 }
@@ -1442,12 +1442,12 @@ class IE8Term extends LiteralTerm {
 }
 
 class GroupTerm extends Expression {
-  final List<LiteralTerm> _terms;
+  final List<LiteralTerm> terms;
 
-  GroupTerm(super.span) : _terms = [];
+  GroupTerm(super.span) : terms = [];
 
   void add(LiteralTerm term) {
-    _terms.add(term);
+    terms.add(term);
   }
 
   @override

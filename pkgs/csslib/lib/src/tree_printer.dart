@@ -583,7 +583,7 @@ class _TreePrinter extends Visitor {
   void visitGroupTerm(GroupTerm node) {
     heading('GroupTerm', node);
     output.depth++;
-    output.writeNodeList('grouped terms', node._terms);
+    output.writeNodeList('grouped terms', node.terms);
     output.depth--;
   }
 

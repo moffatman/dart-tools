@@ -617,14 +617,14 @@ class CssPrinter extends Visitor {
   void visitFunctionTerm(FunctionTerm node) {
     // TODO(terry): Optimize rgb to a hexcolor.
     emit('${node.text}(');
-    node._params.visit(this);
+    node.params.visit(this);
     emit(')');
   }
 
   @override
   void visitGroupTerm(GroupTerm node) {
     emit('(');
-    var terms = node._terms;
+    var terms = node.terms;
     var termsLength = terms.length;
     for (var i = 0; i < termsLength; i++) {
       if (i > 0) emit(_sp);

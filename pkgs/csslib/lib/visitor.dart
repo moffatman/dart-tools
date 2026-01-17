@@ -485,12 +485,12 @@ class Visitor implements VisitorBase {
   @override
   dynamic visitFunctionTerm(FunctionTerm node) {
     visitLiteralTerm(node);
-    visitExpressions(node._params);
+    visitExpressions(node.params);
   }
 
   @override
   dynamic visitGroupTerm(GroupTerm node) {
-    for (var term in node._terms) {
+    for (var term in node.terms) {
       term.visit(this);
     }
   }
